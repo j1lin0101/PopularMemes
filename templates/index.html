@@ -1,0 +1,36 @@
+<html>
+  <head>
+  <title>Memes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+  </head>
+  <body>
+
+    <div class="navbar">
+      <h1>{{page_title}}</h1>
+      <form action="redresponse" method="get">
+      <label for="name">Search for Another Meme Subreddit?</label><input type="text"id="name"name="name"/>
+      <input type="submit"value="Go"name="gobtn"/>
+    </form>
+
+    </div>
+    {% for key, value in data.items() %}
+      <div class="subreddit">
+        {% if generic %}
+          <h2>{{key}}</h2>
+        {% endif %}
+        <div class="memes">
+          {% for meme in value %}
+            <div class="meme">
+              <img src="{{meme.url}}">
+              <div class="stats">
+                <p>Title: {{meme.title}}</p>
+                <p>Upvotes: {{meme.score}}</p>
+                <p>Comments: {{meme.comments}}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </body>
+</html>
