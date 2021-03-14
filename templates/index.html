@@ -15,17 +15,15 @@
     </div>
     {% for key, value in data.items() %}
       <div class="subreddit">
-        {% if generic %}
-          <h2>{{key}}</h2>
-        {% endif %}
+        <h2>{{key}}</h2>
         <div class="memes">
           {% for meme in value %}
             <div class="meme">
-              <img src="{{meme.url}}">
+              <a href="{{meme.url}}"><img src="{{meme.url}}"></a>
               <div class="stats">
-                <p>Title: {{meme.title}}</p>
-                <p>Upvotes: {{meme.score}}</p>
-                <p>Comments: {{meme.comments}}</p>
+                <p><b>Title</b>: {{meme.title}}</p>
+                <p><b>Upvotes</b>: {{meme.score}}</p>
+                <p><b>Comments</b>: {{meme.comments}}</p>
               </div>
             </div>
           {% endfor %}

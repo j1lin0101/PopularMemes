@@ -1,3 +1,19 @@
+@font-face {
+    font-family: NotoSans;
+    src: url('NotoSans-Regular.ttf');
+}
+@font-face {
+    font-family: NotoSans;
+    src: url('NotoSans-Bold.ttf');
+      font-weight: bold;
+
+}
+
+@font-face {
+    font-family: IBMPlexSans;
+    src: url('IBMPlexSans-Medium.ttf');
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -5,11 +21,13 @@ body {
     align-content: center;
     flex-wrap: wrap;
     margin-left: 3vw;
+    background-color:#030303;
+    color: #C9CCCE;
 }
 .memes {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-content: baseline;
     flex-wrap: wrap;
 }
@@ -18,7 +36,7 @@ body {
     .memes {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-content: baseline;
         flex-wrap: wrap;
     }
@@ -28,7 +46,7 @@ body {
     .memes {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-start;
         align-content: baseline;
         flex-wrap: wrap;
     }
@@ -38,28 +56,43 @@ body {
     display: flex;
     flex-direction: column;
     align-content: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
+    background-color: #151516;
+    padding: 1rem;
+    border-radius: 25px;
+    margin: 1rem;
+
 }
 
+h1 {
+font-family: IBMPlexSans;
+}
+.subreddit h2 {
+font-family: IBMPlexSans;}
 
 
 .meme {
     display: flex;
     flex-direction: column;
     align-content: space-evenly;
+    justify-content: space-between;
     margin: 1vh 1vw;
+    max-width: 15vw;
 }
 
 .stats {
+font-family: NotoSans;
+font-size: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
-    max-width:20rem;
+    max-width:15vw;
 }
 
 img {
-    max-height:20rem;
+
+    max-width:15vw;
     display: flex;
     align-self: start;
 
@@ -75,10 +108,17 @@ img {
 form {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    font-family: NotoSans;
+
 }
 
 form input {
     max-height:2rem;
 }
+
+form label {
+    padding-right: 1rem;
+}
+

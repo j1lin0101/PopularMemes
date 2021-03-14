@@ -4,7 +4,7 @@ import logging
 
 subreddits = ['memes', 'dankmemes', 'funny', 'prequelmemes']
 limit = 5
-timeframe = 'month'  # hour, day, week, month, year, all
+timeframe = 'week'  # hour, day, week, month, year, all
 listing = 'top'  # controversial, best, hot, new, random, rising, top
 
 app = Flask(__name__)
@@ -39,7 +39,8 @@ def get_results(r):
                                          'comments': post['data']['num_comments'], 'is_video': post['data']['is_video']}
         if '.gifv' in post['url']:
             post['url'] = post['url'][:-1]
-        postList.append(post)
+        if '.gif' in post['url'] or '.png' in post['url'] or '.jpg' in post['url'] or '.jpeg' in post['url']:
+            postList.append(post)
     return postList
 
 @app.route("/")
@@ -61,7 +62,7 @@ def home():
         print(subreddit)
         print(reddit_dict[subreddit])
         print()
-    return render_template('index.html', page_title = "Popular Meme Subreddits", generic=True, data=reddit_dict)
+    return render_template('index.html', page_title = "Popular Meme Subreddits", data=reddit_dict)
 
 @app.route("/redresponse")
 def search_handler():
@@ -71,7 +72,7 @@ def search_handler():
         r = get_reddit(name, listing, limit, timeframe)
         df = get_results(r)
         reddit_dict[name] = df
-        return render_template('index.html', page_title = f"r/{name}", generic=False, data = reddit_dict)
+        return render_template('index.html', page_title =f"Results for r/{name}", data = reddit_dict)
     else:
         return render_template('index.html', page_title = "Sorry couldn't find that Subreddit")
 
